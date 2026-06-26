@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Parthav Punyansh's 1st Birthday Invitation</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -18,8 +18,11 @@
             font-family: 'Montserrat', sans-serif;
             color: #ffffff;
             background: #090d16;
+            /* 🔴 FIXED: Changed overflow to allow natural touch scrolling on mobile */
             overflow-x: hidden;
+            overflow-y: auto;
             min-height: 100vh;
+            -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling for iOS */
         }
 
         /* --- SPLASH WELCOME OVERLAY --- */
@@ -78,12 +81,13 @@
         .wrapper {
             background: linear-gradient(rgba(9, 13, 22, 0.7), rgba(9, 13, 22, 0.85)), url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
+            width: 100%;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
+            justify-content: flex-start; /* 🔴 FIXED: Avoids vertical squishing on small displays */
+            padding: 40px 20px;
         }
 
         /* Premium Transparent Glass Invitation Panel */
@@ -98,9 +102,9 @@
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            padding: 60px 40px;
+            padding: 50px 40px;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         /* Typography Matrix */
@@ -167,7 +171,7 @@
         .countdown-grid {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin: 35px 0;
         }
         .time-element {
@@ -175,7 +179,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 12px 5px;
             border-radius: 8px;
-            min-width: 75px;
+            min-width: 72px;
         }
         .time-element span {
             display: block;
@@ -241,7 +245,7 @@
             font-family: 'Cinzel', serif;
             color: #ffffff;
             font-size: 1.6rem;
-            margin: 40px 0 25px 0;
+            margin: 20px 0 25px 0;
             font-weight: 400;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -250,13 +254,15 @@
         .vertical-gallery-viewport {
             width: 100%;
             max-width: 450px;
-            height: 550px;
+            height: 500px;
             overflow: hidden;
             position: relative;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+            /* 🔴 FIXED: Ensures swipe gestures pass through to the page on mobile phones */
+            touch-action: pan-y; 
         }
         .vertical-gallery-viewport::before,
         .vertical-gallery-viewport::after {
@@ -313,9 +319,9 @@
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 50px 35px;
+            padding: 45px 35px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .form-group {
             text-align: left;
@@ -332,7 +338,7 @@
         }
         .form-input, .form-select, .form-textarea {
             width: 100%;
-            background: rgba(9, 13, 22, 0.6);
+            background: #090d16;
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 4px;
             padding: 14px 16px;
@@ -340,6 +346,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            -webkit-appearance: none; /* Uniform styling across mobile OS devices */
         }
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
@@ -361,14 +368,18 @@
 
         /* Screen Adaptability Breakpoints */
         @media (max-width: 600px) {
-            .invitation-card, .message-form-panel { padding: 45px 20px; }
-            h1 { font-size: 1.4rem; }
-            .baby-name { font-size: 2.3rem; }
+            .wrapper { padding: 30px 12px; }
+            .invitation-card, .message-form-panel { padding: 40px 16px; }
+            h1 { font-size: 1.35rem; }
+            .baby-name { font-size: 2.2rem; margin: 15px 0 5px 0; }
+            .baby-nickname { font-size: 1rem; margin-bottom: 25px; }
             .welcome-title { font-size: 1.9rem; letter-spacing: 2px; }
-            .countdown-grid { gap: 8px; }
-            .time-element { min-width: 65px; }
-            .time-element span { font-size: 1.3rem; }
-            .vertical-gallery-viewport { height: 450px; }
+            .countdown-grid { gap: 6px; margin: 25px 0; }
+            .time-element { min-width: 62px; padding: 10px 2px; }
+            .time-element span { font-size: 1.25rem; }
+            .time-element label { font-size: 0.55rem; letter-spacing: 1px; }
+            .vertical-gallery-viewport { height: 420px; }
+            .line-divider { margin: 25px auto; }
         }
     </style>
 </head>
@@ -504,20 +515,15 @@
         const contactNumber = document.getElementById('family-contact').value;
         const messageInput = document.getElementById('guest-message').value.trim();
 
-        // Structural Validation check
         if(nameInput === "" || messageInput === "") {
             alert("Please fill in both your Name and Message before sending your blessings.");
             return;
         }
 
-        // Formatting text string for a gorgeous layout on WhatsApp read receipt
         const formattedTemplate = `✨ *Wishes & Blessings for Parthav* ✨\n\n*From:* ${nameInput}\n\n*Message:* ${messageInput}`;
-        
-        // Dynamic URI encoding transformation string
         const encodedMessage = encodeURIComponent(formattedTemplate);
         const destinationURL = `https://api.whatsapp.com/send?phone=91${contactNumber}&text=${encodedMessage}`;
 
-        // Launch into device WhatsApp system thread
         window.open(destinationURL, '_blank');
     }
 
