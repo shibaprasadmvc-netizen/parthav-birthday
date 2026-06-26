@@ -18,11 +18,10 @@
             font-family: 'Montserrat', sans-serif;
             color: #ffffff;
             background: #090d16;
-            /* 🔴 FIXED: Changed overflow to allow natural touch scrolling on mobile */
             overflow-x: hidden;
             overflow-y: auto;
             min-height: 100vh;
-            -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling for iOS */
+            -webkit-overflow-scrolling: touch;
         }
 
         /* --- SPLASH WELCOME OVERLAY --- */
@@ -30,7 +29,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(rgba(9, 13, 22, 0.8), rgba(9, 13, 22, 0.95)), url('bg.jpg') no-repeat center center;
+            background: linear-gradient(rgba(9, 13, 22, 0.85), rgba(9, 13, 22, 0.98)), url('bg.jpg') no-repeat center center;
             background-size: cover;
             z-index: 9999;
             display: flex;
@@ -38,7 +37,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
             padding: 20px;
         }
         .welcome-title {
@@ -68,41 +67,38 @@
             text-transform: uppercase;
             cursor: pointer;
             border-radius: 4px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
         }
         .enter-btn:hover {
             background: #dfba73;
             color: #090d16;
-            box-shadow: 0 0 30px rgba(223, 186, 115, 0.4);
             transform: translateY(-2px);
         }
 
         /* --- MAIN LAYOUT CONTROLLER --- */
         .wrapper {
-            background: linear-gradient(rgba(9, 13, 22, 0.7), rgba(9, 13, 22, 0.85)), url('bg.jpg') no-repeat center center fixed;
+            background: linear-gradient(rgba(9, 13, 22, 0.75), rgba(9, 13, 22, 0.9)), url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
             width: 100%;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* 🔴 FIXED: Avoids vertical squishing on small displays */
-            padding: 40px 20px;
+            justify-content: flex-start;
+            padding: 40px 16px;
         }
 
-        /* Premium Transparent Glass Invitation Panel */
+        /* ⚡ OPTIMIZED FOR MOBILE GPU: Replaced heavy background blur with high-performance solid tint */
         .invitation-card {
             position: relative;
             width: 100%;
             max-width: 620px;
             border-radius: 16px;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            padding: 50px 40px;
+            background: rgba(18, 26, 43, 0.85); /* Solid premium glass look */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            padding: 50px 30px;
             text-align: center;
             margin-bottom: 40px;
         }
@@ -171,13 +167,13 @@
         .countdown-grid {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             margin: 35px 0;
         }
         .time-element {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 5px;
+            padding: 12px 2px;
             border-radius: 8px;
             min-width: 72px;
         }
@@ -237,7 +233,6 @@
         .map-action-btn:hover, .form-submit-btn:hover {
             background: #dfba73;
             color: #090d16;
-            box-shadow: 0 5px 20px rgba(223, 186, 115, 0.3);
         }
 
         /* --- VERTICAL AUTO-SCROLLING PHOTO GALLERY REEL --- */
@@ -254,14 +249,12 @@
         .vertical-gallery-viewport {
             width: 100%;
             max-width: 450px;
-            height: 500px;
+            height: 480px;
             overflow: hidden;
             position: relative;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
             margin-bottom: 40px;
-            /* 🔴 FIXED: Ensures swipe gestures pass through to the page on mobile phones */
             touch-action: pan-y; 
         }
         .vertical-gallery-viewport::before,
@@ -280,12 +273,18 @@
             bottom: 0;
             background: linear-gradient(to top, #090d16 0%, transparent 100%);
         }
+        
+        /* ⚡ OPTIMIZED FOR MOBILE GPU: Force Hardware Acceleration on the moving panel */
         .vertical-scroll-track {
             display: flex;
             flex-direction: column;
             gap: 15px;
             padding: 15px 0;
-            animation: scrollVertical 70s linear infinite;
+            animation: scrollVertical 85s linear infinite;
+            will-change: transform;
+            transform: translate3d(0, 0, 0); 
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
         .vertical-scroll-track:hover {
             animation-play-state: paused;
@@ -296,7 +295,6 @@
             aspect-ratio: 4 / 5;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
         .gallery-card img {
             width: 100%;
@@ -305,22 +303,21 @@
             display: block;
         }
 
+        /* Hardware Accelerated Engine Rules */
         @keyframes scrollVertical {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-50%); }
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(0, -50%, 0); }
         }
 
         /* --- PROFESSIONAL WHATSAPP ROUTING FORM PANEL --- */
         .message-form-panel {
             width: 100%;
             max-width: 620px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(18, 26, 43, 0.85); /* Solid premium glass look */
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
-            padding: 45px 35px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            padding: 45px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             margin-bottom: 30px;
         }
         .form-group {
@@ -346,12 +343,11 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            -webkit-appearance: none; /* Uniform styling across mobile OS devices */
+            -webkit-appearance: none;
         }
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: #dfba73;
-            box-shadow: 0 0 10px rgba(223, 186, 115, 0.15);
         }
         .form-select option {
             background: #090d16;
@@ -368,8 +364,8 @@
 
         /* Screen Adaptability Breakpoints */
         @media (max-width: 600px) {
-            .wrapper { padding: 30px 12px; }
-            .invitation-card, .message-form-panel { padding: 40px 16px; }
+            .wrapper { padding: 25px 12px; }
+            .invitation-card, .message-form-panel { padding: 35px 16px; }
             h1 { font-size: 1.35rem; }
             .baby-name { font-size: 2.2rem; margin: 15px 0 5px 0; }
             .baby-nickname { font-size: 1rem; margin-bottom: 25px; }
@@ -378,7 +374,7 @@
             .time-element { min-width: 62px; padding: 10px 2px; }
             .time-element span { font-size: 1.25rem; }
             .time-element label { font-size: 0.55rem; letter-spacing: 1px; }
-            .vertical-gallery-viewport { height: 420px; }
+            .vertical-gallery-viewport { height: 400px; }
             .line-divider { margin: 25px auto; }
         }
     </style>
@@ -503,10 +499,10 @@
     function enterWebsite() {
         const curtain = document.getElementById('welcome-overlay');
         curtain.style.opacity = '0';
-        curtain.style.transform = 'scale(1.05)';
+        curtain.style.transform = 'translate3d(0, -100%, 0)'; /* Hardware accelerated escape track */
         setTimeout(() => {
             curtain.style.display = 'none';
-        }, 800);
+        }, 500);
     }
 
     /* --- Interactive WhatsApp Message Assembly Router --- */
@@ -536,6 +532,7 @@
 
         const measureDays = Math.floor(chronometerDelta / (1000 * 60 * 60 * 24));
         const measureHours = Math.floor((chronometerDelta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        .webkit-backface-visibility: hidden;
         const measureMinutes = Math.floor((chronometerDelta % (1000 * 60 * 60)) / (1000 * 60));
         const measureSeconds = Math.floor((chronometerDelta % (1000 * 60)) / 1000);
 
