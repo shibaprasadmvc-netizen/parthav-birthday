@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Parthav Punyansh's 1st Birthday Invitation</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=400;600;700&family=Montserrat:wght=200;300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* Modern Layout Architecture */
@@ -88,14 +88,14 @@
             padding: 40px 16px;
         }
 
-        /* ⚡ OPTIMIZED FOR MOBILE GPU: Replaced heavy background blur with high-performance solid tint */
+        /* Fluid Mobile Box Container Optimization */
         .invitation-card {
             position: relative;
             width: 100%;
             max-width: 620px;
             border-radius: 16px;
             overflow: hidden;
-            background: rgba(18, 26, 43, 0.85); /* Solid premium glass look */
+            background: rgba(18, 26, 43, 0.85); 
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             padding: 50px 30px;
@@ -274,7 +274,6 @@
             background: linear-gradient(to top, #090d16 0%, transparent 100%);
         }
         
-        /* ⚡ OPTIMIZED FOR MOBILE GPU: Force Hardware Acceleration on the moving panel */
         .vertical-scroll-track {
             display: flex;
             flex-direction: column;
@@ -303,7 +302,6 @@
             display: block;
         }
 
-        /* Hardware Accelerated Engine Rules */
         @keyframes scrollVertical {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(0, -50%, 0); }
@@ -313,7 +311,7 @@
         .message-form-panel {
             width: 100%;
             max-width: 620px;
-            background: rgba(18, 26, 43, 0.85); /* Solid premium glass look */
+            background: rgba(18, 26, 43, 0.85); 
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 45px 30px;
@@ -499,7 +497,7 @@
     function enterWebsite() {
         const curtain = document.getElementById('welcome-overlay');
         curtain.style.opacity = '0';
-        curtain.style.transform = 'translate3d(0, -100%, 0)'; /* Hardware accelerated escape track */
+        curtain.style.transform = 'translate3d(0, -100%, 0)';
         setTimeout(() => {
             curtain.style.display = 'none';
         }, 500);
@@ -532,7 +530,6 @@
 
         const measureDays = Math.floor(chronometerDelta / (1000 * 60 * 60 * 24));
         const measureHours = Math.floor((chronometerDelta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        .webkit-backface-visibility: hidden;
         const measureMinutes = Math.floor((chronometerDelta % (1000 * 60 * 60)) / (1000 * 60));
         const measureSeconds = Math.floor((chronometerDelta % (1000 * 60)) / 1000);
 
