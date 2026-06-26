@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parthav Punyansh's 1st Birthday Invitation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Layout Architecture */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            background: #090d16;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- SPLASH WELCOME OVERLAY --- */
+        #welcome-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(rgba(9, 13, 22, 0.8), rgba(9, 13, 22, 0.95)), url('bg.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+            padding: 20px;
+        }
+        .welcome-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: #dfba73;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .welcome-sub {
+            font-size: 0.9rem;
+            color: #cccccc;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+        .enter-btn {
+            background: transparent;
+            color: #dfba73;
+            border: 1px solid #dfba73;
+            padding: 16px 45px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .enter-btn:hover {
+            background: #dfba73;
+            color: #090d16;
+            box-shadow: 0 0 30px rgba(223, 186, 115, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* --- MAIN LAYOUT CONTROLLER --- */
+        .wrapper {
+            background: linear-gradient(rgba(9, 13, 22, 0.7), rgba(9, 13, 22, 0.85)), url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        /* Premium Transparent Glass Invitation Panel */
+        .invitation-card {
+            position: relative;
+            width: 100%;
+            max-width: 620px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Typography Matrix */
+        .tagline {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #a0aec0;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: 2px;
+        }
+        .baby-name {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #dfba73;
+            font-weight: 600;
+            margin: 25px 0 5px 0;
+            letter-spacing: 3px;
+        }
+        .baby-nickname {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 35px;
+        }
+        
+        .line-divider {
+            width: 50px;
+            height: 1px;
+            background: #dfba73;
+            margin: 35px auto;
+            opacity: 0.7;
+        }
+
+        /* Lineage Identity Headers */
+        .section-title {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #dfba73;
+            font-weight: 400;
+            margin-top: 25px;
+        }
+        .names {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: 400;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* Luxury Ticking Countdown Design */
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 35px 0;
+        }
+        .time-element {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 5px;
+            border-radius: 8px;
+            min-width: 75px;
+        }
+        .time-element span {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: #dfba73;
+            font-family: 'Cinzel', serif;
+        }
+        .time-element label {
+            display: block;
+            font-size: 0.6rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        /* Schedule / Coordinates Labels */
+        .info-row {
+            margin: 25px 0;
+        }
+        .info-label {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #a0aec0;
+            font-weight: 300;
+        }
+        .info-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 400;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        /* Action Buttons styling */
+        .map-action-btn, .form-submit-btn {
+            display: inline-block;
+            background: transparent;
+            color: #dfba73;
+            border: 1px solid #dfba73;
+            padding: 15px 35px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-top: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .map-action-btn:hover, .form-submit-btn:hover {
+            background: #dfba73;
+            color: #090d16;
+            box-shadow: 0 5px 20px rgba(223, 186, 115, 0.3);
+        }
+
+        /* --- VERTICAL AUTO-SCROLLING PHOTO GALLERY REEL --- */
+        .slider-section-title {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1.6rem;
+            margin: 40px 0 25px 0;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .vertical-gallery-viewport {
+            width: 100%;
+            max-width: 450px;
+            height: 550px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            margin-bottom: 50px;
+        }
+        .vertical-gallery-viewport::before,
+        .vertical-gallery-viewport::after {
+            content: '';
+            position: absolute;
+            left: 0; width: 100%; height: 60px;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .vertical-gallery-viewport::before {
+            top: 0;
+            background: linear-gradient(to bottom, #090d16 0%, transparent 100%);
+        }
+        .vertical-gallery-viewport::after {
+            bottom: 0;
+            background: linear-gradient(to top, #090d16 0%, transparent 100%);
+        }
+        .vertical-scroll-track {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px 0;
+            animation: scrollVertical 70s linear infinite;
+        }
+        .vertical-scroll-track:hover {
+            animation-play-state: paused;
+        }
+        .gallery-card {
+            width: calc(100% - 30px);
+            margin: 0 auto;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes scrollVertical {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        /* --- PROFESSIONAL WHATSAPP ROUTING FORM PANEL --- */
+        .message-form-panel {
+            width: 100%;
+            max-width: 620px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 50px 35px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        .form-group {
+            text-align: left;
+            margin-bottom: 22px;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #dfba73;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            background: rgba(9, 13, 22, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            padding: 14px 16px;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #dfba73;
+            box-shadow: 0 0 10px rgba(223, 186, 115, 0.15);
+        }
+        .form-select option {
+            background: #090d16;
+            color: #ffffff;
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+        .form-submit-btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Screen Adaptability Breakpoints */
+        @media (max-width: 600px) {
+            .invitation-card, .message-form-panel { padding: 45px 20px; }
+            h1 { font-size: 1.4rem; }
+            .baby-name { font-size: 2.3rem; }
+            .welcome-title { font-size: 1.9rem; letter-spacing: 2px; }
+            .countdown-grid { gap: 8px; }
+            .time-element { min-width: 65px; }
+            .time-element span { font-size: 1.3rem; }
+            .vertical-gallery-viewport { height: 450px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="welcome-overlay">
+    <h1 class="welcome-title">Parthav Punyansh</h1>
+    <p class="welcome-sub">Join us in our special occasion</p>
+    <button class="enter-btn" onclick="enterWebsite()">Enter Invitation</button>
+</div>
+
+<div class="wrapper">
+
+    <div class="invitation-card">
+        <p class="tagline">The Pleasure of Your Company is Requested</p>
+        <h1>Celebrating the 1st Birthday of Our Little Prince</h1>
+        
+        <p class="baby-name">Parthav Punyansh</p>
+        <p class="baby-nickname">( Veer )</p>
+
+        <div class="line-divider"></div>
+
+        <p class="section-title">Grandson of</p>
+        <p class="names">Smt. Mamta Mallik & Sri Subash Chandra Mallik</p>
+
+        <p class="section-title">Precious Son of</p>
+        <p class="names">Smt. Sumitra Mallik & Sri Shibasankar Mallik</p>
+
+        <div class="line-divider"></div>
+
+        <p class="tagline" style="color: #dfba73;">The Celebration Begins In</p>
+        <div class="countdown-grid" id="clock-display">
+            <div class="time-element">
+                <span id="days">00</span>
+                <label>Days</label>
+            </div>
+            <div class="time-element">
+                <span id="hours">00</span>
+                <label>Hours</label>
+            </div>
+            <div class="time-element">
+                <span id="minutes">00</span>
+                <label>Mins</label>
+            </div>
+            <div class="time-element">
+                <span id="seconds">00</span>
+                <label>Secs</label>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <p class="info-label">Date & Timing Schedule</p>
+            <div class="info-value">June 29, 2026 — 7:00 PM Onwards</div>
+        </div>
+
+        <div class="info-row">
+            <p class="info-label">The Venue Location</p>
+            <div class="info-value">Kanika Convention, Bhubaneswar</div>
+        </div>
+
+        <a href="https://share.google/JERQL0H7RQtav9Nca" target="_blank" class="map-action-btn">Navigate to Venue</a>
+    </div>
+
+    <h2 class="slider-section-title">Glimpses of Our Prince</h2>
+    <div class="vertical-gallery-viewport">
+        <div class="vertical-scroll-track">
+            <div class="gallery-card"><img src="pic1.jpg" alt="Photo 1" onerror="this.src='https://picsum.photos/500/625?random=1'"></div>
+            <div class="gallery-card"><img src="pic2.jpg" alt="Photo 2" onerror="this.src='https://picsum.photos/500/625?random=2'"></div>
+            <div class="gallery-card"><img src="pic3.jpg" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
+            <div class="gallery-card"><img src="pic4.jpg" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
+            <div class="gallery-card"><img src="pic5.jpg" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
+            <div class="gallery-card"><img src="pic6.jpg" alt="Photo 6" onerror="this.src='https://picsum.photos/500/625?random=6'"></div>
+            <div class="gallery-card"><img src="pic7.jpg" alt="Photo 7" onerror="this.src='https://picsum.photos/500/625?random=7'"></div>
+            <div class="gallery-card"><img src="pic8.jpg" alt="Photo 8" onerror="this.src='https://picsum.photos/500/625?random=8'"></div>
+            <div class="gallery-card"><img src="pic9.jpg" alt="Photo 9" onerror="this.src='https://picsum.photos/500/625?random=9'"></div>
+            <div class="gallery-card"><img src="pic10.jpg" alt="Photo 10" onerror="this.src='https://picsum.photos/500/625?random=10'"></div>
+            
+            <div class="gallery-card"><img src="pic1.jpg" alt="Photo 1" onerror="this.src='https://picsum.photos/500/625?random=1'"></div>
+            <div class="gallery-card"><img src="pic2.jpg" alt="Photo 2" onerror="this.src='https://picsum.photos/500/625?random=2'"></div>
+            <div class="gallery-card"><img src="pic3.jpg" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
+            <div class="gallery-card"><img src="pic4.jpg" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
+            <div class="gallery-card"><img src="pic5.jpg" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
+            <div class="gallery-card"><img src="pic6.jpg" alt="Photo 6" onerror="this.src='https://picsum.photos/500/625?random=6'"></div>
+            <div class="gallery-card"><img src="pic7.jpg" alt="Photo 7" onerror="this.src='https://picsum.photos/500/625?random=7'"></div>
+            <div class="gallery-card"><img src="pic8.jpg" alt="Photo 8" onerror="this.src='https://picsum.photos/500/625?random=8'"></div>
+            <div class="gallery-card"><img src="pic9.jpg" alt="Photo 9" onerror="this.src='https://picsum.photos/500/625?random=9'"></div>
+            <div class="gallery-card"><img src="pic10.jpg" alt="Photo 10" onerror="this.src='https://picsum.photos/500/625?random=10'"></div>
+        </div>
+    </div>
+
+    <div class="message-form-panel">
+        <h2 class="slider-section-title" style="margin-top: 0; font-size: 1.4rem;">Send Blessings & RSVP</h2>
+        <p class="tagline" style="text-align: center; margin-bottom: 30px;">Share your warm wishes directly with us</p>
+        
+        <div class="form-group">
+            <label class="form-label" for="guest-name">Your Full Name</label>
+            <input type="text" id="guest-name" class="form-input" placeholder="Enter your name here..." required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="family-contact">Send Wishes To</label>
+            <select id="family-contact" class="form-select">
+                <option value="9438327428">Sri Shibasankar Mallik (Father)</option>
+                <option value="7894024090">Smt. Sumitra Mallik (Mother)</option>
+                <option value="9437728404">Sri Subash Chandra Mallik (Grandfather)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="guest-message">Your Blessings / Message</label>
+            <textarea id="guest-message" class="form-textarea" placeholder="Write your warm wishes or attendance details for baby Parthav..." required></textarea>
+        </div>
+
+        <button class="form-submit-btn" onclick="sendWishesToWhatsApp()">Send Blessings via WhatsApp</button>
+    </div>
+
+</div>
+
+<script>
+    /* --- Overlay Disassembly Controller --- */
+    function enterWebsite() {
+        const curtain = document.getElementById('welcome-overlay');
+        curtain.style.opacity = '0';
+        curtain.style.transform = 'scale(1.05)';
+        setTimeout(() => {
+            curtain.style.display = 'none';
+        }, 800);
+    }
+
+    /* --- Interactive WhatsApp Message Assembly Router --- */
+    function sendWishesToWhatsApp() {
+        const nameInput = document.getElementById('guest-name').value.trim();
+        const contactNumber = document.getElementById('family-contact').value;
+        const messageInput = document.getElementById('guest-message').value.trim();
+
+        // Structural Validation check
+        if(nameInput === "" || messageInput === "") {
+            alert("Please fill in both your Name and Message before sending your blessings.");
+            return;
+        }
+
+        // Formatting text string for a gorgeous layout on WhatsApp read receipt
+        const formattedTemplate = `✨ *Wishes & Blessings for Parthav* ✨\n\n*From:* ${nameInput}\n\n*Message:* ${messageInput}`;
+        
+        // Dynamic URI encoding transformation string
+        const encodedMessage = encodeURIComponent(formattedTemplate);
+        const destinationURL = `https://api.whatsapp.com/send?phone=91${contactNumber}&text=${encodedMessage}`;
+
+        // Launch into device WhatsApp system thread
+        window.open(destinationURL, '_blank');
+    }
+
+    /* --- Live Target Metric Synchronization Loop --- */
+    const targetMilestone = new Date("June 29, 2026 19:00:00").getTime();
+
+    const chronometerSync = setInterval(function() {
+        const structuralNow = new Date().getTime();
+        const chronometerDelta = targetMilestone - structuralNow;
+
+        const measureDays = Math.floor(chronometerDelta / (1000 * 60 * 60 * 24));
+        const measureHours = Math.floor((chronometerDelta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const measureMinutes = Math.floor((chronometerDelta % (1000 * 60 * 60)) / (1000 * 60));
+        const measureSeconds = Math.floor((chronometerDelta % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = measureDays < 10 ? "0" + measureDays : measureDays;
+        document.getElementById("hours").innerText = measureHours < 10 ? "0" + measureHours : measureHours;
+        document.getElementById("minutes").innerText = measureMinutes < 10 ? "0" + measureMinutes : measureMinutes;
+        document.getElementById("seconds").innerText = measureSeconds < 10 ? "0" + measureSeconds : measureSeconds;
+
+        if (chronometerDelta < 0) {
+            clearInterval(chronometerSync);
+            document.getElementById("clock-display").innerHTML = "<p style='font-size: 1.3rem; font-weight: 400; color: #dfba73; font-family: \"Cinzel\", serif; letter-spacing: 2px;'>🎉 The Event Has Begun! 🎉</p>";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
