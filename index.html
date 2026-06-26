@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Parthav Punyansh's 1st Birthday Invitation</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=400;600;700&family=Montserrat:wght=200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght=200;300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* Modern Layout Architecture */
@@ -77,7 +77,7 @@
 
         /* --- MAIN LAYOUT CONTROLLER --- */
         .wrapper {
-            background: linear-gradient(rgba(9, 13, 22, 0.75), rgba(9, 13, 22, 0.9)), url('bg.jpg') no-repeat center center fixed;
+            background: linear-gradient(rgba(9, 13, 22, 0.7), rgba(9, 13, 22, 0.85)), url('bg.jpg') no-repeat center center fixed;
             background-size: cover;
             width: 100%;
             min-height: 100vh;
@@ -88,16 +88,18 @@
             padding: 40px 16px;
         }
 
-        /* Fluid Mobile Box Container Optimization */
+        /* ✨ RESTORED: Premium Transparent Glass Invitation Panel */
         .invitation-card {
             position: relative;
             width: 100%;
             max-width: 620px;
             border-radius: 16px;
             overflow: hidden;
-            background: rgba(18, 26, 43, 0.85); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
             padding: 50px 30px;
             text-align: center;
             margin-bottom: 40px;
@@ -233,6 +235,7 @@
         .map-action-btn:hover, .form-submit-btn:hover {
             background: #dfba73;
             color: #090d16;
+            box-shadow: 0 5px 20px rgba(223, 186, 115, 0.3);
         }
 
         /* --- VERTICAL AUTO-SCROLLING PHOTO GALLERY REEL --- */
@@ -307,15 +310,17 @@
             100% { transform: translate3d(0, -50%, 0); }
         }
 
-        /* --- PROFESSIONAL WHATSAPP ROUTING FORM PANEL --- */
+        /* ✨ RESTORED: Transparent Glass RSVP Panel */
         .message-form-panel {
             width: 100%;
             max-width: 620px;
-            background: rgba(18, 26, 43, 0.85); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 45px 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
             margin-bottom: 30px;
         }
         .form-group {
@@ -494,17 +499,19 @@
 
 <script>
     /* --- Overlay Disassembly Controller --- */
-    function enterWebsite() {
+    window.enterWebsite = function() {
         const curtain = document.getElementById('welcome-overlay');
-        curtain.style.opacity = '0';
-        curtain.style.transform = 'translate3d(0, -100%, 0)';
-        setTimeout(() => {
-            curtain.style.display = 'none';
-        }, 500);
-    }
+        if (curtain) {
+            curtain.style.opacity = '0';
+            curtain.style.transform = 'translate3d(0, -100%, 0)';
+            setTimeout(() => {
+                curtain.style.display = 'none';
+            }, 500);
+        }
+    };
 
     /* --- Interactive WhatsApp Message Assembly Router --- */
-    function sendWishesToWhatsApp() {
+    window.sendWishesToWhatsApp = function() {
         const nameInput = document.getElementById('guest-name').value.trim();
         const contactNumber = document.getElementById('family-contact').value;
         const messageInput = document.getElementById('guest-message').value.trim();
@@ -519,7 +526,7 @@
         const destinationURL = `https://api.whatsapp.com/send?phone=91${contactNumber}&text=${encodedMessage}`;
 
         window.open(destinationURL, '_blank');
-    }
+    };
 
     /* --- Live Target Metric Synchronization Loop --- */
     const targetMilestone = new Date("June 29, 2026 19:00:00").getTime();
@@ -533,14 +540,22 @@
         const measureMinutes = Math.floor((chronometerDelta % (1000 * 60 * 60)) / (1000 * 60));
         const measureSeconds = Math.floor((chronometerDelta % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerText = measureDays < 10 ? "0" + measureDays : measureDays;
-        document.getElementById("hours").innerText = measureHours < 10 ? "0" + measureHours : measureHours;
-        document.getElementById("minutes").innerText = measureMinutes < 10 ? "0" + measureMinutes : measureMinutes;
-        document.getElementById("seconds").innerText = measureSeconds < 10 ? "0" + measureSeconds : measureSeconds;
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        if (daysEl) daysEl.innerText = measureDays < 10 ? "0" + measureDays : measureDays;
+        if (hoursEl) hoursEl.innerText = measureHours < 10 ? "0" + measureHours : measureHours;
+        if (minutesEl) minutesEl.innerText = measureMinutes < 10 ? "0" + measureMinutes : measureMinutes;
+        if (secondsEl) secondsEl.innerText = measureSeconds < 10 ? "0" + measureSeconds : measureSeconds;
 
         if (chronometerDelta < 0) {
             clearInterval(chronometerSync);
-            document.getElementById("clock-display").innerHTML = "<p style='font-size: 1.3rem; font-weight: 400; color: #dfba73; font-family: \"Cinzel\", serif; letter-spacing: 2px;'>🎉 The Event Has Begun! 🎉</p>";
+            const clockEl = document.getElementById("clock-display");
+            if (clockEl) {
+                clockEl.innerHTML = "<p style='font-size: 1.3rem; font-weight: 400; color: #dfba73; font-family: \"Cinzel\", serif; letter-spacing: 2px;'>🎉 The Event Has Begun! 🎉</p>";
+            }
         }
     }, 1000);
 </script>
