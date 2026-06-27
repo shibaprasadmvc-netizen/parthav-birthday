@@ -392,10 +392,10 @@
 
         <p class="tagline" style="color: #dfba73;">The Celebration Begins In</p>
         <div class="countdown-grid" id="clock-display">
-            <div class="time-element"><span>00</span><label>Days</label></div>
-            <div class="time-element"><span>00</span><label>Hours</label></div>
-            <div class="time-element"><span>00</span><label>Mins</label></div>
-            <div class="time-element"><span>00</span><label>Secs</label></div>
+            <div class="time-element"><span id="days">00</span><label>Days</label></div>
+            <div class="time-element"><span id="hours">00</span><label>Hours</label></div>
+            <div class="time-element"><span id="minutes">00</span><label>Mins</label></div>
+            <div class="time-element"><span id="seconds">00</span><label>Secs</label></div>
         </div>
 
         <div class="info-row">
@@ -414,17 +414,27 @@
     <h2 class="slider-section-title">Glimpses of Our Prince</h2>
     <div class="vertical-gallery-viewport">
         <div class="vertical-scroll-track">
-            <div class="gallery-card"><img src="pic1.jpg" alt="Photo 1" onerror="this.src='https://picsum.photos/500/625?random=1'"></div>
-            <div class="gallery-card"><img src="pic2.jpg" alt="Photo 2" onerror="this.src='https://picsum.photos/500/625?random=2'"></div>
-            <div class="gallery-card"><img src="pic3.jpg" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
-            <div class="gallery-card"><img src="pic4.jpg" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
-            <div class="gallery-card"><img src="pic5.jpg" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
+            <div class="gallery-card"><img src="pic1.jpg?v=2" alt="Photo 1" onerror="this.src='https://picsum.photos/500/625?random=1'"></div>
+            <div class="gallery-card"><img src="pic2.jpg?v=2" alt="Photo 2" onerror="this.src='https://picsum.photos/500/625?random=2'"></div>
+            <div class="gallery-card"><img src="pic3.jpg?v=2" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
+            <div class="gallery-card"><img src="pic4.jpg?v=2" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
+            <div class="gallery-card"><img src="pic5.jpg?v=2" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
+            <div class="gallery-card"><img src="pic6.jpg?v=2" alt="Photo 6" onerror="this.src='https://picsum.photos/500/625?random=6'"></div>
+            <div class="gallery-card"><img src="pic7.jpg?v=2" alt="Photo 7" onerror="this.src='https://picsum.photos/500/625?random=7'"></div>
+            <div class="gallery-card"><img src="pic8.jpg?v=2" alt="Photo 8" onerror="this.src='https://picsum.photos/500/625?random=8'"></div>
+            <div class="gallery-card"><img src="pic9.jpg?v=2" alt="Photo 9" onerror="this.src='https://picsum.photos/500/625?random=9'"></div>
+            <div class="gallery-card"><img src="pic10.jpg?v=2" alt="Photo 10" onerror="this.src='https://picsum.photos/500/625?random=10'"></div>
             
-            <div class="gallery-card"><img src="pic1.jpg" alt="Photo 1" onerror="this.src='https://picsum.photos/500/625?random=1'"></div>
-            <div class="gallery-card"><img src="pic2.jpg" alt="Photo 2" onerror="this.src='https://picsum.photos/500/625?random=2'"></div>
-            <div class="gallery-card"><img src="pic3.jpg" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
-            <div class="gallery-card"><img src="pic4.jpg" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
-            <div class="gallery-card"><img src="pic5.jpg" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
+            <div class="gallery-card"><img src="pic1.jpg?v=2" alt="Photo 1" onerror="this.src='https://picsum.photos/500/625?random=1'"></div>
+            <div class="gallery-card"><img src="pic2.jpg?v=2" alt="Photo 2" onerror="this.src='https://picsum.photos/500/625?random=2'"></div>
+            <div class="gallery-card"><img src="pic3.jpg?v=2" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
+            <div class="gallery-card"><img src="pic4.jpg?v=2" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
+            <div class="gallery-card"><img src="pic5.jpg?v=2" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
+            <div class="gallery-card"><img src="pic6.jpg?v=2" alt="Photo 6" onerror="this.src='https://picsum.photos/500/625?random=6'"></div>
+            <div class="gallery-card"><img src="pic7.jpg?v=2" alt="Photo 7" onerror="this.src='https://picsum.photos/500/625?random=7'"></div>
+            <div class="gallery-card"><img src="pic8.jpg?v=2" alt="Photo 8" onerror="this.src='https://picsum.photos/500/625?random=8'"></div>
+            <div class="gallery-card"><img src="pic9.jpg?v=2" alt="Photo 9" onerror="this.src='https://picsum.photos/500/625?random=9'"></div>
+            <div class="gallery-card"><img src="pic10.jpg?v=2" alt="Photo 10" onerror="this.src='https://picsum.photos/500/625?random=10'"></div>
         </div>
     </div>
 
@@ -456,7 +466,6 @@
 </div>
 
 <script>
-    // Absolute override to prevent freezing
     function enterWebsite() {
         var overlay = document.getElementById('welcome-overlay');
         if (overlay) {
@@ -481,6 +490,37 @@
         var text = "✨ *Wishes & Blessings for Parthav* ✨\n\n*From:* " + nameInput + "\n*Message:* " + messageInput;
         window.open("https://api.whatsapp.com/send?phone=91" + contactNumber + "&text=" + encodeURIComponent(text), '_blank');
     }
+
+    /* --- Live Countdown Timer Synchronization Loop --- */
+    var targetMilestone = new Date("June 29, 2026 19:00:00").getTime();
+
+    var chronometerSync = setInterval(function() {
+        var structuralNow = new Date().getTime();
+        var chronometerDelta = targetMilestone - structuralNow;
+
+        var measureDays = Math.floor(chronometerDelta / (1000 * 60 * 60 * 24));
+        var measureHours = Math.floor((chronometerDelta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var measureMinutes = Math.floor((chronometerDelta % (1000 * 60 * 60)) / (1000 * 60));
+        var measureSeconds = Math.floor((chronometerDelta % (1000 * 60)) / 1000);
+
+        var daysEl = document.getElementById("days");
+        var hoursEl = document.getElementById("hours");
+        var minutesEl = document.getElementById("minutes");
+        var secondsEl = document.getElementById("seconds");
+
+        if (daysEl) daysEl.innerText = measureDays < 10 ? "0" + measureDays : measureDays;
+        if (hoursEl) hoursEl.innerText = measureHours < 10 ? "0" + measureHours : measureHours;
+        if (minutesEl) minutesEl.innerText = measureMinutes < 10 ? "0" + measureMinutes : measureMinutes;
+        if (secondsEl) secondsEl.innerText = measureSeconds < 10 ? "0" + measureSeconds : measureSeconds;
+
+        if (chronometerDelta < 0) {
+            clearInterval(chronometerSync);
+            var clockEl = document.getElementById("clock-display");
+            if (clockEl) {
+                clockEl.innerHTML = "<p style='font-size: 1.3rem; font-weight: 400; color: #dfba73; font-family: \"Cinzel\", serif; letter-spacing: 2px;'>🎉 The Event Has Begun! 🎉</p>";
+            }
+        }
+    }, 1000);
 </script>
 
 </body>
