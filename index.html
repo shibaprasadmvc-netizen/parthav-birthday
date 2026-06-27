@@ -83,7 +83,8 @@
 
         /* --- MAIN LAYOUT CONTROLLER --- */
         .wrapper {
-            background: linear-gradient(rgba(9, 13, 22, 0.65), rgba(9, 13, 22, 0.8)), url('bg.jpg') no-repeat center center fixed;
+            /* FIXED RECALCULATION BUG REMOVED HERE: Background scrolls naturally with page to prevent Android lag */
+            background: linear-gradient(rgba(9, 13, 22, 0.65), rgba(9, 13, 22, 0.8)), url('bg.jpg') no-repeat center center;
             background-size: cover;
             width: 100%;
             min-height: 100vh;
@@ -94,22 +95,27 @@
             padding: 40px 16px;
         }
 
-        /* ✨ 100% SMOOTH GPU TRANSPARENT GLASS CARD */
+        /* ✨ BACK TO BEAUTIFUL TRANSPARENT GLASS CARD */
         .invitation-card {
             position: relative;
             width: 100%;
             max-width: 600px;
             border-radius: 24px;
             overflow: hidden;
+            
+            /* Your gorgeous luxury transparent setup */
             background: rgba(15, 23, 42, 0.45);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            
             border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
             padding: 55px 35px;
             text-align: center;
             margin-bottom: 40px;
-            transform: translate3d(0,0,0);
+            
+            /* Keeps rendering fast on mobile screens */
+            transform: translate3d(0, 0, 0);
             will-change: transform;
         }
 
