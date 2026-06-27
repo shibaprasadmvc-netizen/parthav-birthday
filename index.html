@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Parthav Punyansh's 1st Birthday Invitation</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght=300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
     
     <style>
         /* Modern Reset Matrix */
@@ -37,7 +37,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+            transition: all 0.5s ease-in-out;
             padding: 20px;
         }
         .welcome-title {
@@ -60,23 +60,25 @@
             font-weight: 400;
         }
         .enter-btn {
-            background: transparent;
-            color: #dfba73;
+            background: #dfba73;
+            color: #090d16;
             border: 1px solid #dfba73;
             padding: 16px 45px;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 4px;
             text-transform: uppercase;
             cursor: pointer;
             border-radius: 4px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(223, 186, 115, 0.1);
+            box-shadow: 0 4px 25px rgba(223, 186, 115, 0.3);
+            position: relative;
+            z-index: 10000;
         }
         .enter-btn:hover {
-            background: #dfba73;
-            color: #090d16;
-            box-shadow: 0 4px 25px rgba(223, 186, 115, 0.4);
+            background: transparent;
+            color: #dfba73;
+            box-shadow: 0 4px 25px rgba(223, 186, 115, 0.5);
         }
 
         /* --- MAIN LAYOUT CONTROLLER --- */
@@ -92,14 +94,14 @@
             padding: 40px 16px;
         }
 
-        /* ✨ 100% SMOOTH GPU HARDWARE ACCELERATED TRANSPARENT CARD */
+        /* ✨ 100% SMOOTH GPU TRANSPARENT GLASS CARD */
         .invitation-card {
             position: relative;
             width: 100%;
             max-width: 600px;
             border-radius: 24px;
             overflow: hidden;
-            background: rgba(15, 23, 42, 0.45); /* Retaining perfect transparency */
+            background: rgba(15, 23, 42, 0.45);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -107,8 +109,6 @@
             padding: 55px 35px;
             text-align: center;
             margin-bottom: 40px;
-            
-            /* ⚡ Performance Fix: Locks rendering on mobile GPU to completely eliminate scrolling stutter */
             transform: translate3d(0,0,0);
             will-change: transform;
         }
@@ -134,7 +134,6 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         
-        /* The Metallic Royal Focal Point Name */
         .baby-name {
             font-family: 'Cinzel', serif;
             font-size: 3.4rem;
@@ -163,7 +162,6 @@
             margin: 40px auto;
         }
 
-        /* Stylized Elegant Lineage Headers */
         .section-title {
             font-family: 'Playfair Display', serif;
             font-style: italic;
@@ -185,7 +183,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
 
-        /* Luxury Ticking Countdown Design */
+        /* Luxury Countdown Design */
         .countdown-grid {
             display: flex;
             justify-content: center;
@@ -218,7 +216,6 @@
             font-weight: 500;
         }
 
-        /* Schedule Details Styling */
         .info-row {
             margin: 35px 0;
         }
@@ -240,7 +237,6 @@
             line-height: 1.5;
         }
 
-        /* Custom Action Controls */
         .map-action-btn, .form-submit-btn {
             display: inline-block;
             background: transparent;
@@ -256,16 +252,14 @@
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(223, 186, 115, 0.05);
         }
         .map-action-btn:hover, .form-submit-btn:hover {
             background: #dfba73;
             color: #090d16;
             box-shadow: 0 6px 25px rgba(223, 186, 115, 0.35);
-            transform: translateY(-1px);
         }
 
-        /* --- VERTICAL AUTO-SCROLLING PHOTO GALLERY REEL --- */
+        /* --- VERTICAL PHOTO REEL --- */
         .slider-section-title {
             font-family: 'Cinzel', serif;
             color: #ffffff;
@@ -287,22 +281,6 @@
             margin-bottom: 45px;
             touch-action: pan-y; 
         }
-        .vertical-gallery-viewport::before,
-        .vertical-gallery-viewport::after {
-            content: '';
-            position: absolute;
-            left: 0; width: 100%; height: 60px;
-            z-index: 5;
-            pointer-events: none;
-        }
-        .vertical-gallery-viewport::before {
-            top: 0;
-            background: linear-gradient(to bottom, #090d16 0%, transparent 100%);
-        }
-        .vertical-gallery-viewport::after {
-            bottom: 0;
-            background: linear-gradient(to top, #090d16 0%, transparent 100%);
-        }
         
         .vertical-scroll-track {
             display: flex;
@@ -312,11 +290,6 @@
             animation: scrollVertical 85s linear infinite;
             will-change: transform;
             transform: translate3d(0, 0, 0); 
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-        .vertical-scroll-track:hover {
-            animation-play-state: paused;
         }
         .gallery-card {
             width: calc(100% - 30px);
@@ -324,6 +297,7 @@
             aspect-ratio: 4 / 5;
             overflow: hidden;
             border-radius: 12px;
+            background: rgba(255,255,255,0.05);
         }
         .gallery-card img {
             width: 100%;
@@ -350,7 +324,6 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
             margin-bottom: 30px;
             transform: translate3d(0,0,0);
-            will-change: transform;
         }
         .form-group {
             text-align: left;
@@ -374,44 +347,19 @@
             color: #ffffff;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
-            -webkit-appearance: none;
-        }
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: #dfba73;
-            box-shadow: 0 0 10px rgba(223, 186, 115, 0.2);
-        }
-        .form-select option {
-            background: #090d16;
-            color: #ffffff;
-        }
-        .form-textarea {
-            resize: vertical;
-            min-height: 110px;
-        }
-        .form-submit-btn {
-            width: 100%;
-            margin-top: 10px;
         }
 
-        /* Responsive Breakpoints Matrix */
         @media (max-width: 600px) {
             .wrapper { padding: 25px 12px; }
             .invitation-card, .message-form-panel { padding: 45px 20px; }
             h1 { font-size: 1.2rem; letter-spacing: 2px; }
             .baby-name { font-size: 2.7rem; margin: 20px 0 2px 0; }
-            .baby-nickname { font-size: 1.05rem; margin-bottom: 25px; }
             .welcome-title { font-size: 2.2rem; letter-spacing: 4px; }
             .countdown-grid { gap: 8px; margin: 25px 0; }
             .time-element { min-width: 66px; padding: 12px 2px; }
             .time-element span { font-size: 1.4rem; }
-            .time-element label { font-size: 0.5rem; letter-spacing: 1.5px; }
             .vertical-gallery-viewport { height: 390px; }
-            .line-divider { margin: 30px auto; }
-            .names { font-size: 1.05rem; letter-spacing: 1px; }
-            .info-value { font-size: 1.05rem; letter-spacing: 1px; }
-            .slider-section-title { font-size: 1.2rem; }
+            .names { font-size: 1.05rem; }
             .section-title { font-size: 0.85rem; }
         }
     </style>
@@ -425,7 +373,6 @@
 </div>
 
 <div class="wrapper">
-
     <div class="invitation-card">
         <p class="tagline">The Pleasure of Your Company is Requested</p>
         <h1>Celebrating the 1st Birthday of Our Little Prince</h1>
@@ -445,22 +392,10 @@
 
         <p class="tagline" style="color: #dfba73;">The Celebration Begins In</p>
         <div class="countdown-grid" id="clock-display">
-            <div class="time-element">
-                <span id="days">00</span>
-                <label>Days</label>
-            </div>
-            <div class="time-element">
-                <span id="hours">00</span>
-                <label>Hours</label>
-            </div>
-            <div class="time-element">
-                <span id="minutes">00</span>
-                <label>Mins</label>
-            </div>
-            <div class="time-element">
-                <span id="seconds">00</span>
-                <label>Secs</label>
-            </div>
+            <div class="time-element"><span>00</span><label>Days</label></div>
+            <div class="time-element"><span>00</span><label>Hours</label></div>
+            <div class="time-element"><span>00</span><label>Mins</label></div>
+            <div class="time-element"><span>00</span><label>Secs</label></div>
         </div>
 
         <div class="info-row">
@@ -484,22 +419,12 @@
             <div class="gallery-card"><img src="pic3.jpg" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
             <div class="gallery-card"><img src="pic4.jpg" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
             <div class="gallery-card"><img src="pic5.jpg" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
-            <div class="gallery-card"><img src="pic6.jpg" alt="Photo 6" onerror="this.src='https://picsum.photos/500/625?random=6'"></div>
-            <div class="gallery-card"><img src="pic7.jpg" alt="Photo 7" onerror="this.src='https://picsum.photos/500/625?random=7'"></div>
-            <div class="gallery-card"><img src="pic8.jpg" alt="Photo 8" onerror="this.src='https://picsum.photos/500/625?random=8'"></div>
-            <div class="gallery-card"><img src="pic9.jpg" alt="Photo 9" onerror="this.src='https://picsum.photos/500/625?random=9'"></div>
-            <div class="gallery-card"><img src="pic10.jpg" alt="Photo 10" onerror="this.src='https://picsum.photos/500/625?random=10'"></div>
             
             <div class="gallery-card"><img src="pic1.jpg" alt="Photo 1" onerror="this.src='https://picsum.photos/500/625?random=1'"></div>
             <div class="gallery-card"><img src="pic2.jpg" alt="Photo 2" onerror="this.src='https://picsum.photos/500/625?random=2'"></div>
             <div class="gallery-card"><img src="pic3.jpg" alt="Photo 3" onerror="this.src='https://picsum.photos/500/625?random=3'"></div>
             <div class="gallery-card"><img src="pic4.jpg" alt="Photo 4" onerror="this.src='https://picsum.photos/500/625?random=4'"></div>
             <div class="gallery-card"><img src="pic5.jpg" alt="Photo 5" onerror="this.src='https://picsum.photos/500/625?random=5'"></div>
-            <div class="gallery-card"><img src="pic6.jpg" alt="Photo 6" onerror="this.src='https://picsum.photos/500/625?random=6'"></div>
-            <div class="gallery-card"><img src="pic7.jpg" alt="Photo 7" onerror="this.src='https://picsum.photos/500/625?random=7'"></div>
-            <div class="gallery-card"><img src="pic8.jpg" alt="Photo 8" onerror="this.src='https://picsum.photos/500/625?random=8'"></div>
-            <div class="gallery-card"><img src="pic9.jpg" alt="Photo 9" onerror="this.src='https://picsum.photos/500/625?random=9'"></div>
-            <div class="gallery-card"><img src="pic10.jpg" alt="Photo 10" onerror="this.src='https://picsum.photos/500/625?random=10'"></div>
         </div>
     </div>
 
@@ -508,66 +433,55 @@
         <p class="tagline" style="text-align: center; margin-bottom: 30px;">Share your warm wishes directly with us</p>
         
         <div class="form-group">
-            <label class="form-label" for="guest-name">Your Full Name</label>
+            <label class="form-label">Your Full Name</label>
             <input type="text" id="guest-name" class="form-input" placeholder="Enter your name here..." required>
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="family-contact">Send Wishes To</label>
+            <label class="form-label">Send Wishes To</label>
             <select id="family-contact" class="form-select">
                 <option value="9438327428">Sri Shibasankar Mallik (Father)</option>
-                <option value="8260651296">Smt. Sumitra Mallik (Mother)</option>
+                <option value="7894024090">Smt. Sumitra Mallik (Mother)</option>
                 <option value="9437728404">Sri Subash Chandra Mallik (Grandfather)</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="guest-message">Your Blessings / Message</label>
-            <textarea id="guest-message" class="form-textarea" placeholder="Write your warm wishes or attendance details for baby Parthav..." required></textarea>
+            <label class="form-label">Your Blessings / Message</label>
+            <textarea id="guest-message" class="form-textarea" placeholder="Write your warm wishes..." required></textarea>
         </div>
 
         <button class="form-submit-btn" onclick="sendWishesToWhatsApp()">Send Blessings via WhatsApp</button>
     </div>
-
 </div>
 
 <script>
-    /* --- Overlay Disassembly Controller --- */
-    window.enterWebsite = function() {
-        const curtain = document.getElementById('welcome-overlay');
-        if (curtain) {
-            curtain.style.opacity = '0';
-            curtain.style.transform = 'translate3d(0, -100%, 0)';
-            setTimeout(() => {
-                curtain.style.display = 'none';
+    // Absolute override to prevent freezing
+    function enterWebsite() {
+        var overlay = document.getElementById('welcome-overlay');
+        if (overlay) {
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+            setTimeout(function() {
+                overlay.style.display = 'none';
             }, 500);
         }
-    };
+    }
 
-    /* --- Interactive WhatsApp Message Assembly Router --- */
-    window.sendWishesToWhatsApp = function() {
-        const nameInput = document.getElementById('guest-name').value.trim();
-        const contactNumber = document.getElementById('family-contact').value;
-        const messageInput = document.getElementById('guest-message').value.trim();
+    function sendWishesToWhatsApp() {
+        var nameInput = document.getElementById('guest-name').value.trim();
+        var contactNumber = document.getElementById('family-contact').value;
+        var messageInput = document.getElementById('guest-message').value.trim();
 
         if(nameInput === "" || messageInput === "") {
-            alert("Please fill in both your Name and Message before sending your blessings.");
+            alert("Please fill in both your Name and Message.");
             return;
         }
 
-        const formattedTemplate = `✨ *Wishes & Blessings for Parthav* ✨\n\n*From:* ${nameInput}\n\n*Message:* ${messageInput}`;
-        const encodedMessage = encodeURIComponent(formattedTemplate);
-        const destinationURL = `https://api.whatsapp.com/send?phone=91${contactNumber}&text=${encodedMessage}`;
+        var text = "✨ *Wishes & Blessings for Parthav* ✨\n\n*From:* " + nameInput + "\n*Message:* " + messageInput;
+        window.open("https://api.whatsapp.com/send?phone=91" + contactNumber + "&text=" + encodeURIComponent(text), '_blank');
+    }
+</script>
 
-        window.open(destinationURL, '_blank');
-    };
-
-    /* --- Live Target Metric Synchronization Loop --- */
-    const targetMilestone = new Date("June 29, 2026 19:00:00").getTime();
-
-    const chronometerSync = setInterval(function() {
-        const structuralNow = new Date().getTime();
-        const chronometerDelta = targetMilestone - structuralNow;
-
-        const measureDays = Math.floor(chronometerDelta / (1000 * 60 * 60 * 24));
-        const measureHours = Math.floor((chronometerDelta % (1000 * 60 * 60 * 24)) / (
+</body>
+</html>
